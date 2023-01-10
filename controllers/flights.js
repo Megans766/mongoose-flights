@@ -51,5 +51,6 @@ function show(req, res) {
 export {
   newFLight as new,
   create,
-  index
+  index,
+  show
 }
