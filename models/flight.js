@@ -2,6 +2,13 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const reviewSchema = new Schema({
+  content: String,
+  rating: {type: Number, min: 1, max: 5, default: 5}
+}, {
+  timestamps: true
+})
+
 const flightSchema = new Schema({
   airline: {
     type: String,
@@ -20,7 +27,8 @@ const flightSchema = new Schema({
     min: 10,
     max: 9999
   },
-  departs: Date
+  departs: Date,
+  reviews: [reviewSchema]
 }, {
   timestamps: true
 })

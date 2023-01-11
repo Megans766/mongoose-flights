@@ -1,0 +1,42 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/movies/new.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form 
+    id="new-form" 
+    action="/flights/<%= flight._id %>?_method=PUT" 
+    method="POST"
+  >
+    <label for="airline-input">Airline:</label>
+    <select name="airline" id="airline-input">
+      <option value="<%= flight.airline %>"><%= flight.airline %></option>
+      <option value="American">American</option>
+      <option value="Delta">Delta</option>
+      <option value="Frontier">Frontier</option>
+      <option value="Southwest">Southwest</option>
+      <option value="United">United</option>
+    </select>
+
+    <label for="airport-input">Airport:</label>
+    <select name="airport" id="airport-input">
+      <option value="<%= flight.airport %>"><%= flight.airport %></option>
+      <option value="AUS">AUS</option>
+      <option value="DFW">DFW</option>
+      <option value="DEN">DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+    
+    <label for="flightNo-input">Flight Number:</label>
+    <input type="number" name="flightNo" id="flightNo-input" value="<%= flight.flightNo %>">
+    
+    <label for="departs-input">Departs:</label>
+    <input type="datetime-local" name="departs" id="departs-input" value="<%= flight.departs %>" min="01-09-2023T00:00" max="01-09-2024T00:00">
+    
+    <button type="submit">Save Flight</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>
