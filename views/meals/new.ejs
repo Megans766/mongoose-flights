@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/performers/new.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <p>Select meals for your flight below</p>
+  <form id="add-meal-form" action="/meals" method="POST">
+    <label for="meal-input">Meals:</label>
+    <select name="meals" id="meal-input">
+      <option value="Poptarts">Poptarts</option>
+      <option value="Veggie Sandwhich">Veggie Sandwhich</option>
+      <option value="Cheese Pizza">Cheese Pizza</option>
+      <option value="Chicken Sandwhich">Chicken Sandwhich</option>
+      <option value="Cheeseburger">Cheeseburger</option>
+      <option value="Tomato Basil Soup">Tomato Basil Soup</option>
+    </select>
+  </form>
+  <button>ADD MEALS</button>
+</main>
