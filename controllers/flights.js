@@ -40,9 +40,17 @@ function show(req, res) {
   Flight.findById(req.params.id)
   .populate('meals')
   .then(flight => {
-    res.render('flights/show', {
-      title: 'Flight Detail',
-      flight: flight
+    Meal.find({ _id: {$nin: flight.meals} })
+    .then(mealsNotSelected  => {
+      res.render('flights/show', {
+        title: 'Flight Detail',
+        flight: flight,
+        mealsNotSelected
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/flights')
     })
   })
   .catch(err => {
@@ -101,6 +109,21 @@ function createTicket(req, res) {
     .catch(err => {
       console.log(err)
       res.redirect('/')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function addMealToFLight(req, res) {
+  Flight.findById(req.params.id)
+  .then(flight => {
+    flight.meals.push(req.body.mealId)
+    flight.save()
+    .then(() => {
+      res.redirect('/flights')
     })
   })
   .catch(err => {
