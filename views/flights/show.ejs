@@ -28,7 +28,12 @@
   <form action="/flights/<%= flight._id %>/meals" method="POST">
     <select name="mealId">
       <% mealsNotSelected.forEach(meal => { %>
-        <option value="<%= meal._id %>"><%= meal.name %></option>
+        <option value="Poptarts">Poptarts</option>
+        <option value="Veggie Sandwhich">Veggie Sandwhich</option>
+        <option value="Cheese Pizza">Cheese Pizza</option>
+        <option value="Chicken Sandwhich">Chicken Sandwhich</option>
+        <option value="Cheeseburger">Cheeseburger</option>
+        <option value="Tomato Basil Soup">Tomato Basil Soup</option>
       <% }) %>
     </select>
     <button type="submit">ADD MEALS</button> 
